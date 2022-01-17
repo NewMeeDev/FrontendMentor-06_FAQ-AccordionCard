@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet"> 
+  <title>Frontend Mentor | FAQ Accordion Card</title>
+</head>
+<body>
+
+    <main class="card">
+
+      <aside class="card__spacer"> 
+        <img class="illustration" src="images/illustration-box-desktop.svg" title="an illustration of a woman in front of a big screen">
+      </aside>
+
+      <section class="faq">
+
+        <h1>FAQ</h1>
+
+        <input type="radio" name="entry" id="title1" />
+        <label for="title1">How many team members can I invite?</label>
+        <div class="content">
+            <p>You can invite up to 2 additional users on the Free plan. There is no limit on 
+              team members for the Premium plan.</p>
+        </div>
+
+        <hr>
+
+        <input type="radio" name="entry" id="title2" />
+        <label for="title2">What is the maximum file upload size?</label>
+
+        <div class="content">
+            <p>No more than 2GB. All files in your account must fit your allotted storage space.</p>
+        </div>
+
+        <hr>
+
+        <input type="radio" name="entry" id="title3" />
+        <label for="title3">How do I reset my password?</label>
+
+        <div class="content">
+            <p>Click “Forgot password” from the login page or “Change password” from your profile page.
+                A reset link will be emailed to you.</p>
+        </div>
+
+        <hr>
+
+        <input type="radio" name="entry" id="title4" />
+        <label for="title4">Can I cancel my subscription?</label>
+
+        <div class="content">
+            <p>Yes! Send us a message and we’ll process your request no questions asked.</p>
+        </div>
+
+        <hr>
+
+        <input type="radio" name="entry" id="title5" />
+        <label for="title5">Do you provide additional support?</label>
+
+        <div class="content">
+            <p>Chat and email support is available 24/7. Phone lines are open during normal business hours.</p>
+        </div>
+
+        <hr>
+
+      </section>
+
+    </main>
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/NewMeeDev">NewmeeDev</a>.
+  </footer>
+
+  <script>
+    /////////////////////////////////////////////////////////////////////
+    // this is the script-part for the responsive illustration layouts //
+    /////////////////////////////////////////////////////////////////////
+
+    // define some variables
+    let isDesktopActive = false;
+    let switchWidth = 1020;
+
+    // first check if desktop layout is active
+    if (window.innerWidth >= switchWidth) {
+      isDesktopActive = true;
+    }
+
+    // add an event listener for resizing the page which calls the function switchLayout()
+    window.addEventListener('resize', switchLayout); 
+
+    // create the DOM element constants
+    const card__spacer = document.querySelector('.card__spacer');
+    const illustration = document.querySelector('.illustration');
+
+    // if first page call is in mobile view then call setMobileLayout()
+    if (!isDesktopActive && window.innerWidth < switchWidth) {
+        setMobileLayout(card__spacer, illustration);
+    }
+
+    // then always check every resizings of the page and call the correct layout function
+    function switchLayout() {
+      if (isDesktopActive && window.innerWidth < switchWidth) {
+        isDesktopActive = false;
+        setMobileLayout(card__spacer, illustration);
+      }
+      else if (!isDesktopActive && window.innerWidth >= switchWidth) {
+        isDesktopActive = true;
+        setDesktopLayout(card__spacer, illustration);        
+      }
+    }
+
+    // set the image source for desktop design
+    function setDesktopLayout(cs, img) {
+      img.setAttribute('src', 'images/illustration-box-desktop.svg');
+    }
+
+    // set the image source for mobile design
+    function setMobileLayout(cs, img) { 
+      img.setAttribute('src', 'images/illustration-woman-online-mobile.svg');
+    }
+    
+  </script>
+
+</body>
+</html>

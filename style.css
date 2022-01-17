@@ -1,0 +1,234 @@
+:root {
+    /* sizes */
+    --mobile-width: 375px;
+    --desktop-width: 1440px;
+
+    /* colors */
+    /* primary-text */
+    --very-dark-desaturated-blue: hsl(238, 29%, 16%);
+    --soft-red: hsl(14, 88%, 65%);
+    /* neutral-text*/
+    --very-dark-grayish-blue: hsl(237, 12%, 33%);
+    --dark-grayish-blue: hsl(240, 6%, 50%);
+    /* background gradient */
+    --soft-violet: hsl(273, 75%, 66%);
+    --soft-blue: hsl(240, 73%, 65%);
+    /* dividers */
+    --light-grayish-blue: hsl(240, 5%, 91%);
+    
+    /* fonts */
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 12px;
+}
+
+body {
+    box-sizing: content-box;
+	margin: 0;
+	padding: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(var(--soft-violet), var(--soft-blue));
+}
+
+.card {
+    width: 920px;
+    height: 508px;
+    border-radius: 1.8em;
+    background: white url(images/bg-pattern-desktop.svg) no-repeat;
+    background-position: -575px -295px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.card__spacer {
+    width: 945px;
+    background: url(images/illustration-woman-online-desktop.svg) no-repeat;
+    background-position: -84px 70px;
+}
+
+.illustration {
+    position: relative;
+    top: 204px;
+    left: -94px;
+}
+
+.faq {
+    color: var(--dark-grayish-blue);
+    padding-right: 95px;
+    width: 692px;
+}
+
+
+h1 {
+    color: var(--very-dark-desaturated-blue);
+    margin: 64px 0 31px 0;
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+p {
+    margin: 1px 0 10px 0;
+}
+
+input {
+    display: none;
+}
+
+label {
+    color: var(--very-dark-grayish-blue);
+    display: block;
+    font-size: 1.1em; 
+    padding: 9px 0;
+    margin: 0 0 1px 0;
+    cursor: pointer;
+    position: relative;
+}
+
+label::after {
+	content: "";
+	position: absolute;
+	background: url('images/icon-arrow-down.svg') no-repeat;
+	width: 10px;
+	height: 10px;
+	right: 16px;
+	top: 15px;
+}
+
+input:checked + label::after {
+	content: "";
+	position: absolute;
+	background: url('images/icon-arrow-down.svg') no-repeat;
+	width: 10px;
+	height: 10px;
+	right: 16px;
+	top: 10px;
+	transform: rotate(180deg);
+}
+
+label:hover {
+	color: var(--soft-red);
+    font-weight: bold;
+}
+
+.content {
+    padding: 0; 
+    margin: 0;
+}
+
+input + label + .content {
+	opacity: 0;
+	height: 0;
+	font-size: 0;
+	padding: 0;
+	transition: ease .5s;
+}
+
+input:checked + label + .content {
+    font-size: 1em;
+	opacity: 1;
+    line-height: 1.6em;
+    display: inline;
+}
+
+input:checked + label	 {
+	font-weight: bold;
+    font-size: 1.2em;
+    color: var(--very-dark-desaturated-blue);
+}
+
+hr {
+    color: var(--light-grayish-blue);
+    height: 1px;
+    opacity: 0.2;
+}
+
+
+
+/* predefined */
+.attribution { 
+    position: absolute;
+    bottom: 10px;
+    font-size: 11px; 
+    text-align: center; 
+    color: var(--very-dark-desaturated-blue);
+}
+
+.attribution a { 
+    color: var(--light-grayish-blue);
+}
+
+
+
+/* css for smaller devices */
+@media only screen and (max-width: 1020px) {
+    .card {
+        width: 327px;
+        min-height: 535px;
+        background: white url(images/bg-pattern-mobile.svg) no-repeat;
+        background-position: center 0px;
+        display: block;
+    }
+
+    .card__spacer {
+        width: 100%;
+        background: none;
+    }
+
+    .illustration {
+        width: 73%;
+        position: relative;
+        top: -108px;
+        left: 44px;
+    }
+
+    .faq {      
+        margin: -51px 20px 20px 23px;
+        padding: 0;
+        width: 278px;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 0 0 24px 0;
+    }
+
+    input:checked + label	 {
+        font-size: 1.1em;
+    }
+
+    label::after {
+        right: 0;
+    }
+    
+    input:checked + label::after {
+        right: 0;
+    }
+
+    input:checked + label + .content {
+        padding: 0 0 8px 0;
+        margin: 0;
+    }
+
+}
+
+
+
+/* hide footer if screens are too small */
+@media only screen and (min-width: 1020px) and (max-height: 600px) {
+    .attribution {
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 1020px) and (max-height: 600px){
+    .attribution {
+        display: none;
+    }
+}
